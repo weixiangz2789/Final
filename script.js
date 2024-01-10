@@ -30,6 +30,7 @@ const rollDice = (dices) => {
       doubleCounter++;
     }
   }
+  return dice1Roll + dice2Roll + dice3Roll;
 };
 
 const findSum = () => {
@@ -69,7 +70,7 @@ const findMode = () => {
 
 const generateTable = () => {
   resetRolls();
-  diceTable.innerHTML = "";
+  diceTable.innerHTML = "Dice Table";
   let selectedDice;
   const check1 = document.getElementById("1");
   check1.checked ? (selectedDice = 1) : undefined;
@@ -78,14 +79,49 @@ const generateTable = () => {
   const check3 = document.getElementById("3");
   check3.checked ? (selectedDice = 3) : undefined;
 
-  for (let i = 0; i < 10; i++) {
-    rollDice(selectedDice);
-    const row = diceTable.insertRow();
-    for (let j = 0; j < selectedDice; j++) {
-      const cell = row.insertCell();
-      cell.textContent = diceArray[j];
-    }
+  let start;
+  let end;
+  check1.checked ? ((start = 1), (end = 7)) : undefined;
+  check2.checked ? ((start = 2), (end = 13)) : undefined;
+  check3.checked ? ((start = 3), (end = 19)) : undefined;
+  let dictArr = [];
+  for (let i = start; i < end; i++) {
+    let dict = {
+      frequency: i,
+      value: 0,
+    };
+    dictArr.push(dict);
   }
+  console.log(dictArr);
+  for (let i = start; i < end; i++) {
+    let rollSum = rollDice(selectedDice);
+    console.log(rollSum);
+    dictArr.forEach((x) => {
+      if (rollSum == dictArr.frequency) {
+        dictArr.value++;
+      }
+    });
+    console.log(dictArr);
+    const row = diceTable.insertRow();
+    row.textContent = i;
+    const cell = row.insertCell();
+    cell.textContent = dictArr[i - start].value;
+  }
+  console.log(diceArray);
+  const meanRow = diceTable.insertRow();
+  const meanCell = meanRow.insertCell();
+  meanRow.textContent = "Mean: ";
+  meanCell.textContent = findMean();
+
+  const medianRow = diceTable.insertRow();
+  const medianCell = medianRow.insertCell();
+  medianRow.textContent = "Median: ";
+  medianCell.textContent = findMedian();
+
+  const modeRow = diceTable.insertRow();
+  const modeCell = modeRow.insertCell();
+  modeRow.textContent = "Mode: ";
+  modeCell.textContent = findMode();
 };
 
 const resetRolls = () => {
@@ -96,16 +132,16 @@ const resetRolls = () => {
   diceArray = [];
 };
 
-rollDice(1);
-rollDice(2);
-rollDice(3);
-console.log(dice1Roll);
-console.log(dice2Roll);
-console.log(dice3Roll);
-console.log(diceArray.sort());
-console.log("Double: " + doubleCounter);
-console.log("Triple: " + tripleCounter);
-console.log("Sum: " + findSum());
-console.log("Mean: " + findMean());
-console.log("Median: " + findMedian());
-console.log("Mode: " + findMode());
+// rollDice(1);
+// rollDice(2);
+// rollDice(3);
+// console.log(dice1Roll);
+// console.log(dice2Roll);
+// console.log(dice3Roll);
+// console.log(diceArray.sort());
+// console.log("Double: " + doubleCounter);
+// console.log("Triple: " + tripleCounter);
+// console.log("Sum: " + findSum());
+// console.log("Mean: " + findMean());
+// console.log("Median: " + findMedian());
+// console.log("Mode: " + findMode());

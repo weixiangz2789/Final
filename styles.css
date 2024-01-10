@@ -19,3 +19,13 @@ form {
   width: 55px;
   border-radius: 8px;
 }
+span {
+  text-align: center;
+}
+table {
+  padding-left: 45%;
+}
+td,
+tr {
+  text-align: left;
+}
