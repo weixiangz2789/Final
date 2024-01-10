@@ -5,16 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
     <script src="script.js" async></script>
   </head>
   <body>
-    <h1>Roll Roll Roll Your Dice</h1>
+    <h1 id="title">Roll Roll Roll Your Dice</h1>
     <form>
       <input type="checkbox" id="1" />
+      <label for="1">1 Dice</label>
+      <br />
       <input type="checkbox" id="2" />
+      <label for="2">2 Dice</label>
+      <br />
       <input type="checkbox" id="3" />
+      <label for="3">3 Dice</label>
       <br />
       <input type="text" id="Rolls" />
     </form>
+    <button id="roll" onclick="generateTable()">Roll</button>
+    <table id="diceTable"></table>
   </body>
 </html>

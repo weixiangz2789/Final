@@ -60,11 +60,32 @@ const findMode = () => {
       counter++;
     } else if (counter > maxCounter) {
       maxCounter = counter;
-      counter = 1;
       mode = diceArray[i];
     }
+    counter = 1;
   }
   return mode;
+};
+
+const generateTable = () => {
+  resetRolls();
+  diceTable.innerHTML = "";
+  let selectedDice;
+  const check1 = document.getElementById("1");
+  check1.checked ? (selectedDice = 1) : undefined;
+  const check2 = document.getElementById("2");
+  check2.checked ? (selectedDice = 2) : undefined;
+  const check3 = document.getElementById("3");
+  check3.checked ? (selectedDice = 3) : undefined;
+
+  for (let i = 0; i < 10; i++) {
+    rollDice(selectedDice);
+    const row = diceTable.insertRow();
+    for (let j = 0; j < selectedDice; j++) {
+      const cell = row.insertCell();
+      cell.textContent = diceArray[j];
+    }
+  }
 };
 
 const resetRolls = () => {
@@ -72,10 +93,9 @@ const resetRolls = () => {
   dice2Roll = 0;
   dice3Roll = 0;
   sum = 0;
-  let diceArray = [];
+  diceArray = [];
 };
 
-resetRolls();
 rollDice(1);
 rollDice(2);
 rollDice(3);
