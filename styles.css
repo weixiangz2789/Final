@@ -1,14 +1,16 @@
 * {
   font-family: "poppins", sans-serif;
-  margin: 0;
+  margin: auto;
   padding: 0;
   box-sizing: border-box;
   font-size: 25px;
   text-align: center;
+  background-color: #e3f1ff;
 }
 #title {
   padding-top: 20px;
 }
+
 form {
   padding: 20px;
   display: block;
@@ -22,7 +24,6 @@ form {
 }
 
 #diceTable {
-  margin: auto;
   border-collapse: collapse;
   width: 50%;
 }

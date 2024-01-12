@@ -9,9 +9,11 @@ let sum = 0;
 const rollDice = (dices) => {
   dice1Roll = Math.floor(Math.random() * 6 + 1);
   diceArray.push(dice1Roll);
+  console.log("dice1: " + dice1Roll);
   if (dices > 1) {
     dice2Roll = Math.floor(Math.random() * 6 + 1);
     diceArray.push(dice2Roll);
+    console.log("dice2: " + dice2Roll);
     if (dice1Roll == dice2Roll && dices == 2) {
       doubleCounter++;
     }
@@ -19,6 +21,7 @@ const rollDice = (dices) => {
   if (dices > 2) {
     dice3Roll = Math.floor(Math.random() * 6 + 1);
     diceArray.push(dice3Roll);
+    console.log("dice3: " + dice3Roll);
     if (dice1Roll == dice2Roll && dice2Roll == dice3Roll) {
       tripleCounter++;
     }
@@ -68,10 +71,16 @@ const findMode = () => {
   return mode;
 };
 
+const check = (num) => {
+  for (let i = 1; i < 4; i++) {
+    num == i ? undefined : (document.getElementById(i).checked = false);
+  }
+};
 const generateTable = () => {
   resetRolls();
   diceTable.innerHTML = "";
   let selectedDice;
+
   const check1 = document.getElementById("1");
   check1.checked ? (selectedDice = 1) : undefined;
   const check2 = document.getElementById("2");
@@ -85,6 +94,7 @@ const generateTable = () => {
   check2.checked ? ((start = 2), (end = 13)) : undefined;
   check3.checked ? ((start = 3), (end = 19)) : undefined;
   let dictArr = [];
+
   for (let i = start; i < end; i++) {
     let dict = {
       frequency: i,
@@ -92,9 +102,11 @@ const generateTable = () => {
     };
     dictArr.push(dict);
   }
-  for (let i = 0; i < document.getElementById("Rolls").value; i++) {
+
+  let rollAmount = parseInt(document.getElementById("Rolls").value);
+  for (let i = 0; i < rollAmount; i++) {
     let rollSum = rollDice(selectedDice);
-    console.log(rollSum);
+    console.log("Roll Sum: " + rollSum);
     dictArr.forEach((x) => {
       if (rollSum == x.frequency) {
         x.value++;
@@ -150,4 +162,5 @@ const resetRolls = () => {
   dice3Roll = 0;
   sum = 0;
   diceArray = [];
+  console.clear();
 };

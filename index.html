@@ -9,22 +9,24 @@
     <script src="script.js" async></script>
   </head>
   <body>
-    <h1 id="title">Roll Roll Roll Your Dice</h1>
-    <form>
-      <input type="checkbox" id="1" />
-      <label for="1">1 Dice</label>
-      <br />
-      <input type="checkbox" id="2" />
-      <label for="2">2 Dice</label>
-      <br />
-      <input type="checkbox" id="3" />
-      <label for="3">3 Dice</label>
-      <br />
-      <input type="text" id="Rolls" />
-    </form>
-    <button id="roll" onclick="generateTable()">Roll</button>
-    <span>
+    <div id="container">
+      <h1 id="title">Roll Roll Roll Your Dice</h1>
+      <form>
+        <input type="checkbox" id="1" onclick="check(1)" />
+        <label for="1">1 Dice</label>
+        <br />
+        <input type="checkbox" id="2" onclick="check(2)" />
+        <label for="2">2 Dice</label>
+        <br />
+        <input type="checkbox" id="3" onclick="check(3)" />
+        <label for="3">3 Dice</label>
+        <br />
+        <input type="text" id="Rolls" />
+      </form>
+      <button id="roll" onclick="generateTable()">Roll</button>
+    </div>
+    <div id="bottom">
       <table id="diceTable"></table>
-    </span>
+    </div>
   </body>
 </html>
