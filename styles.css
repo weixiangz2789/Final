@@ -18,14 +18,18 @@ form {
   cursor: pointer;
   width: 55px;
   border-radius: 8px;
+  margin-bottom: 20px;
 }
-span {
+
+#diceTable {
+  margin: auto;
+  border-collapse: collapse;
+  width: 50%;
+}
+
+#diceTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
   text-align: center;
-}
-table {
-  padding-left: 45%;
-}
-td,
-tr {
-  text-align: left;
+  width: 100px;
 }
