@@ -80,7 +80,7 @@ const generateTable = () => {
   resetRolls();
   diceTable.innerHTML = "";
   let selectedDice;
-
+  let text = "";
   const check1 = document.getElementById("1");
   check1.checked ? (selectedDice = 1) : undefined;
   const check2 = document.getElementById("2");
@@ -136,6 +136,15 @@ const generateTable = () => {
       triplesCell2.textContent = tripleCounter;
     }
   }
+
+  for (let i = 0; i < diceArray.length; i++) {
+    text += diceArray[i];
+    if (i + 1 != diceArray.length) {
+      text += ", ";
+    }
+  }
+  document.getElementById("history").textContent = `Rolled: ${text}`;
+  console.log(diceArray);
 
   const meanRow = diceTable.insertRow();
   const meanCell1 = meanRow.insertCell();
